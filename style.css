@@ -4,3 +4,9 @@
   overflow: hidden;
   -webkit-line-clamp: 3; /* number of lines to show */
 }
+#loading  {
+  display: none;
+}
+#loading.block {
+  display: block;
+}

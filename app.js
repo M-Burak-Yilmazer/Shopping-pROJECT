@@ -7,10 +7,21 @@ import { showProduct } from "./productUI.js";
 import {showSelectedProduct} from "./search.js"
 import {loadFromLocalStorage} from "./search.js"
 
+const showImg = () => {
+ 
+  document.querySelector("#loading").classList.add("block");
+};
+const closeImg = () => {
+  document.querySelector("#loading").classList.remove("block");
+};
+
+
 const getFetch = () => {
+  showImg();
   fetch("https://anthonyfs.pythonanywhere.com/api/products/")
     .then((res) => res.json())
     .then((data) => {
+      closeImg()
       veri = data;
       show(veri);
     })
