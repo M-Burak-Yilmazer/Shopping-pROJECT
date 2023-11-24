@@ -1,10 +1,10 @@
 export let veri = [];
 const buttons = document.querySelector("#btns");
-const inputBar = document.querySelector("#searchInput");
+ const inputBar = document.querySelector("#searchInput");
 const categoryName = document.querySelector("#category");
 
 import { showProduct } from "./productUI.js";
-import {showSelectedProduct} from "./search.js"
+
 import {loadFromLocalStorage} from "./search.js"
 
 const showImg = () => {
@@ -31,7 +31,7 @@ const getFetch = () => {
 window.addEventListener("load", () => {
   getFetch();
   categoryName.innerHTML = "ALL";
-  showSelectedProduct("ALL");
+  // showSelectedProduct("ALL");
   loadFromLocalStorage(); 
 });
 
@@ -56,28 +56,44 @@ function show(veri) {
     button.textContent = `${item.toUpperCase()}`;
     buttons.appendChild(button);
   });
+document.querySelectorAll("#btns .btn").forEach((item) =>
+  item.addEventListener("click", (e) => {
+    const text = inputBar.value;
+    document.querySelector("#products").innerHTML = "";
+    let selectedCategory = e.target.textContent;
+    categoryName.innerHTML = selectedCategory;
+
+    // Trigger search even if input value hasn't changed
+    searchAndUpdate(selectedCategory, text);
+  })
+);
 
 
-  document.querySelectorAll("#btns .btn").forEach((item) =>
-    item.addEventListener("click", (e) => {
-      inputBar.value=""
-      document.querySelector("#products").innerHTML = "";
-      let selectedCategory = e.target.textContent;
-      categoryName.innerHTML = selectedCategory;
 
-      if (selectedCategory == "ALL") {
-        veri.forEach((item) => showProduct(item));
-      }
-
-      veri
-        .filter(
-          (veri) =>
-            veri.category.toLowerCase() == selectedCategory.toLowerCase()
-        )
-        .forEach((item) => showProduct(item));
-
-      showSelectedProduct(selectedCategory);
-    })
-  );
+  
 }
 
+function searchAndUpdate(selectedCategory, inputVal) {
+  if (selectedCategory == "ALL") {
+    veri
+      .filter((item) =>
+        item.title.toLowerCase().includes(inputVal.toLowerCase())
+      )
+      .forEach((item) => showProduct(item));
+  } else {
+    veri
+      .filter(
+        (veri) => veri.category.toLowerCase() == selectedCategory.toLowerCase()
+      )
+      .filter((item) =>
+        item.title.toLowerCase().includes(inputVal.toLowerCase())
+      )
+      .forEach((item) => showProduct(item));
+  }
+}
+inputBar.addEventListener("input", () => {
+  document.querySelector("#products").innerHTML = "";
+  const inputVal = inputBar.value.toLowerCase();
+  let selectedCategory = categoryName.textContent;
+  searchAndUpdate(selectedCategory, inputVal);
+});

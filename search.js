@@ -1,28 +1,27 @@
-const inputBar = document.querySelector("#searchInput");
+
 import { veri } from "./app.js";
 import { showProduct } from "./productUI.js";
 
-export function showSelectedProduct(selectedCategory) {
-  inputBar.addEventListener("input", () => {
-    document.querySelector("#products").innerHTML = "";
-    const inputVal = inputBar.value;
-    if (selectedCategory == "ALL") {
-      veri
-        .filter((item) =>
-          item.title.toLowerCase().includes(inputVal.toLowerCase())
-        )
-        .forEach((item) => showProduct(item));
-    }
-    veri
-      .filter(
-        (veri) => veri.category.toLowerCase() == selectedCategory.toLowerCase()
-      )
-      .filter((item) =>
-        item.title.toLowerCase().includes(inputVal.toLowerCase())
-      )
-      .forEach((item) => showProduct(item));
-  });
-}
+// export function showSelectedProduct(selectedCategory) {
+//   inputBar.addEventListener("input", () => {
+//     document.querySelector("#products").innerHTML = "";
+//     const inputVal = inputBar.value.toLowerCase();
+
+//     if (selectedCategory == "ALL") {
+//       veri
+//         .filter((item) => item.title.toLowerCase().includes(inputVal))
+//         .forEach((item) => showProduct(item));
+//     } else {
+//       veri
+//         .filter(
+//           (veri) =>
+//             veri.category.toLowerCase() == selectedCategory.toLowerCase()
+//         )
+//         .filter((item) => item.title.toLowerCase().includes(inputVal))
+//         .forEach((item) => showProduct(item));
+//     }
+//   });
+// }
 
 let boxArray = [];
 
