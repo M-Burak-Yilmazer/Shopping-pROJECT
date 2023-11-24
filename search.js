@@ -2,6 +2,25 @@
 import { veri } from "./app.js";
 import { showProduct } from "./productUI.js";
 
+export function searchAndUpdate(selectedCategory, inputVal) {
+  if (selectedCategory == "ALL") {
+    veri
+      .filter((item) =>
+        item.title.toLowerCase().includes(inputVal.toLowerCase())
+      )
+      .forEach((item) => showProduct(item));
+  } else {
+    veri
+      .filter(
+        (veri) => veri.category.toLowerCase() == selectedCategory.toLowerCase()
+      )
+      .filter((item) =>
+        item.title.toLowerCase().includes(inputVal.toLowerCase())
+      )
+      .forEach((item) => showProduct(item));
+  }
+}
+
 // export function showSelectedProduct(selectedCategory) {
 //   inputBar.addEventListener("input", () => {
 //     document.querySelector("#products").innerHTML = "";
