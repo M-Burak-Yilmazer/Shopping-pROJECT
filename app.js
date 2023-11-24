@@ -60,6 +60,7 @@ function show(veri) {
 
   document.querySelectorAll("#btns .btn").forEach((item) =>
     item.addEventListener("click", (e) => {
+      inputBar.value=""
       document.querySelector("#products").innerHTML = "";
       let selectedCategory = e.target.textContent;
       categoryName.innerHTML = selectedCategory;
