@@ -16,12 +16,13 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="style.css" />
     <title>Shopping</title>
   </head>
   <body>
     <nav class="navbar bg-body-tertiary fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        <a onclick="location.reload()" class="navbar-brand d-flex align-items-center" href="#">
           <img
             src="assets/Clarusway_Logo.png"
             alt="Logo"
@@ -69,7 +70,7 @@
         ></button>
       </div>
       <div class="offcanvas-body">
-        <div class="card mb-3" style="max-width: 540px">
+        <!-- <div class="card mb-3" style="max-width: 540px">
           <div class="row g-0">
             <div class="col-md-4 my-auto">
               <img
@@ -95,12 +96,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="offcanvas-footer">
         <div class="d-flex justify-content-between align-items-center">
           <h5>Toplam Tutar</h5>
-          <h5>0 $</h5>
+          <h5 id="sumtop">0 $</h5>
         </div>
       </div>
     </div>
@@ -140,17 +141,7 @@
       <section
         class="d-flex justify-content-center flex-wrap gap-3"
         id="btns"
-      >
-      <button class="btn btn-primary">All</button>
-      <button class="btn btn-secondary">ELECTRONICS</button>
-      <button class="btn btn-success">SPORTS</button>
-      <button class="btn btn-primary">HOME</button>
-      <button class="btn btn-primary">SHOP</button>
-      <button class="btn btn-primary">CLOTHING</button>
-      
-
-      
-    </section>
+      ></section>
       <!--? ----------------------------------------------------------------------- -->
       <!--?                              search input                               -->
       <!--? ----------------------------------------------------------------------- -->
@@ -171,7 +162,8 @@
       <!--!                             category title                              -->
       <!--! ----------------------------------------------------------------------- -->
       <h4 class="text-center mt-2">
-        Category: <span class="text-danger" id="category">Seçilen Kategori Bilgisi</span>
+        Category:
+        <span class="text-danger" id="category">Seçilen Kategori Bilgisi</span>
       </h4>
       <!--+ ----------------------------------------------------------------------- -->
       <!--+                                products                                 -->
@@ -180,7 +172,7 @@
         class="row row-cols-1 row-cols-md-2 row-cols-xl-3 row-cols-xxl-4 justify-content-center g-4 my-5"
         id="products"
       >
-        <div class="col">
+        <!-- <div class="col">
           <div class="card">
             <img
               src="./assets/Clarusway_Logo.png"
@@ -208,7 +200,7 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
     <script
@@ -216,6 +208,6 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="main.js"></script>
+    <script type="module" src="app.js"></script>
   </body>
 </html>
